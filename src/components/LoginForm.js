@@ -9,6 +9,9 @@ import './login.css'
 const LoginForm = ({loggedin, setLoggedin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
   const [error, setError] = useState("");
   const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
@@ -17,7 +20,7 @@ const LoginForm = ({loggedin, setLoggedin}) => {
     e.preventDefault();
     setError("");
     try {
-      await logIn(email, password);
+      await logIn(name, email, password, phoneNumber, address);
      
       navigate("/home");
     } catch (err) {
@@ -43,9 +46,30 @@ const LoginForm = ({loggedin, setLoggedin}) => {
   return (
     <>
  <Sform className="p-4 box">
-        <h2 className="mb-3 text-center">Login</h2>
-        {/* {error && <Alert variant="danger">{error}</Alert>}
+        <h2 className="mb-3 text-center">SignUp</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Control
+              type="name"
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
+            <Form.Control
+              type="phone number"
+              placeholder="Phone Number"
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicAddress">
+            <Form.Control
+              type="address"
+              placeholder="Address"
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               type="email"
@@ -62,7 +86,7 @@ const LoginForm = ({loggedin, setLoggedin}) => {
           </Form.Group>
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">
-              Log In
+              SignUp
             </Button>
           </div>
         </Form>
@@ -74,18 +98,18 @@ const LoginForm = ({loggedin, setLoggedin}) => {
             onClick={handleGoogleSignIn}
             
           />
-        </div> */}
-        <Link to="/phonesignup">
+        </div>
+        {/* <Link to="/phonesignup">
           <div className="d-grid gap-2 mt-3">
             <Button variant="success" type="Submit">
               Sign in with Phone
             </Button>
           </div>
-        </Link>
+        </Link> */}
       </Sform>
-      {/* <div className="p-4 box mt-3 text-center">
-        Don't have an account? <Link to="/signup">Sign up</Link>
-      </div> */}
+      <div className="p-4 box mt-3 text-center">
+        Already have an account? <Link to="/phonesignup">LogIn</Link>
+      </div>
 
 
 
