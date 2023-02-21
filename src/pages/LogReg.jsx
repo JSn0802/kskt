@@ -1,10 +1,9 @@
 import React from 'react'
-import LoginForm from '../components/LoginForm'
+import SignUpForm from '../components/SignUpForm'
 function LogReg({loggedin, setLoggedin}) {
   return (
     <div>
-  <LoginForm loggedin={loggedin} setLoggedin={setLoggedin}></LoginForm>
-  
+  <SignUpForm loggedin={loggedin} setLoggedin={setLoggedin}></SignUpForm>
     </div>
   )
 }

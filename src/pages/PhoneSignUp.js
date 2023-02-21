@@ -15,7 +15,7 @@ const PhoneSignUp = ({loggedin, setloggedin}) => {
   const [otp, setOtp] = useState("");
   const [result, setResult] = useState("");
   const { setUpRecaptha, logOut } = useUserAuth();
-
+  const [password,setPassword]=useState("");
   window["logOutFunction"] = logOut;
   const navigate = useNavigate();
 
@@ -66,6 +66,13 @@ const PhoneSignUp = ({loggedin, setloggedin}) => {
               placeholder="Enter Phone Number"
             />
             <div id="recaptcha-container"></div>
+          </Form.Group>
+          <Form.Group className="mb-3 sm" controlId="formBasicPassword">
+          <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </Form.Group>
           <div className="button-right">
             <Link to="/">

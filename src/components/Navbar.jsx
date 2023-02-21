@@ -26,10 +26,12 @@ function Navbar({loggedin, setloggedin}) {
           {loggedin.isloggedin ?  <li><Slink to='/track'>Track</Slink></li> : null}
           
           <li><Slink to='/farmers'>Farmers</Slink></li>
-
+          {loggedin.isloggedin?null:
+          <li> <Slink to='/login'>Login</Slink></li>
+          }
           {loggedin.isloggedin ? <li>Hello {loggedin.user}</li> : null}
           
-          {loggedin.isloggedin ? <li style={{fontWeight:"bold", cursor:"pointer"}} onClick={logout}>Logout</li> : <li><Slink to='/logreg'>Login</Slink></li>}
+          {loggedin.isloggedin ? <li style={{fontWeight:"bold", cursor:"pointer"}} onClick={logout}>Logout</li> : <li><Slink to='/signup'>Sign Up</Slink></li>}
           
         </ul>
       </nav>

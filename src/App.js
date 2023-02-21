@@ -1,21 +1,19 @@
-import "./App.css";
-import Home from "./pages/Home";
-import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/Navbar";
-import Product from "./pages/Product";
-import Farmers from "./pages/Farmers";
-import LogReg from "./pages/LogReg";
-import Farmer from "./pages/Farmer";
-import BuyTogether from "./pages/BuyTogether";
-import Signup from "./components/Signup";
-import PhoneSignUp from "./pages/PhoneSignUp";
-import { UserAuthContextProvider } from "./context/UserAuthContext";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Home2 from "./pages/Home2";
-import { useState } from "react";
-import Track from "./pages/Track";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
+import BuyTogether from "./pages/BuyTogether";
+import Farmer from "./pages/Farmer";
+import Farmers from "./pages/Farmers";
+import Home from "./pages/Home";
+import Home2 from "./pages/Home2";
+import LogReg from "./pages/LogReg";
+import PhoneSignUp from "./pages/PhoneSignUp";
+import Product from "./pages/Product";
+import Track from "./pages/Track";
 
 function App() {
   const [loggedin, setloggedin] = useState({
@@ -39,14 +37,14 @@ function App() {
           <Route path="/product/:name" element={<Product />}></Route>
           <Route path="/farmers" element={<Farmers />}></Route>
           <Route
-            path="/logreg"
+            path="/signup"
             element={<LogReg loggedin={loggedin} setloggedin={setloggedin} />}
           ></Route>
           <Route path="/farmer/:name" element={<Farmer />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/buyTogether" element={<BuyTogether />}></Route>
+          {/* <Route path="/signup" element={<Signup />}></Route> */}
+          <Route path="/buyTogether" element={<BuyTogether loggedin={loggedin} setLoggedIn={setloggedin} />}></Route>
           <Route
-            path="/phonesignup"
+            path="/login"
             element={
               <PhoneSignUp loggedin={loggedin} setloggedin={setloggedin} />
             }

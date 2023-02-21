@@ -5,15 +5,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Form } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.css";
-function BuyTogether() {
+function BuyTogether({ loggedin, setLoggedIn }) {
   const cropType = useParams().type;
   const [quantity, setQuantity] = useState(null);
   const data = [10, 20, 30, 40];
+  const navigate = useNavigate();
   const API_KEY = "3033fdbf-2e3b-4292-9ae7-e99df3f7ac81";
-  const [init, setInit] = useState(false);
-
+  const { isloggedin, user } = loggedin;
   const clickHandler = (e) => {
     e.preventDefault();
     console.log(e);
@@ -53,7 +53,7 @@ function BuyTogether() {
     validationSchema: Yup.object({
       name: Yup.string().required("Enter your Name"),
     }),
-    validateOnChange:true,
+    validateOnChange: true,
     onSubmit: initPayment,
   });
   return (
@@ -113,13 +113,15 @@ function BuyTogether() {
               boxShadow: "0px 0px 15px #999",
             }}
             onClick={() => {
-              setInit(true);
+              if (!isloggedin) {
+                navigate("../signup");
+              }
             }}
           >
             CONFIRM ORDER
           </button>
         </div>
-        {init && (
+        {/* {init && (
           <div className={styles.center}>
             <Form style={{ width: "100%" }}>
               <label htmlFor="name">Enter Your Name</label>
@@ -182,7 +184,7 @@ function BuyTogether() {
               CONFIRM PAYMENT
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
