@@ -16,11 +16,11 @@ import Product from "./pages/Product";
 import Track from "./pages/Track";
 
 function App() {
-  const [loggedin, setloggedin] = useState({
-    isloggedin: false,
-    user: null,
-  });
-
+  const init = {
+    isloggedin:window.localStorage.getItem('isloggedin')??false,
+    user:window.localStorage.getItem('user')??""
+  };
+  const [loggedin,setloggedin]=useState(init);
   return (
     <div className="App">
       <div className="logoimg">
@@ -42,18 +42,19 @@ function App() {
           ></Route>
           <Route path="/farmer/:name" element={<Farmer />}></Route>
           {/* <Route path="/signup" element={<Signup />}></Route> */}
-          <Route path="/buyTogether" element={<BuyTogether loggedin={loggedin} setLoggedIn={setloggedin} />}></Route>
+          <Route
+            path="/buyTogether"
+            element={<BuyTogether loggedin={loggedin} setloggedin={setloggedin} />}
+          ></Route>
           <Route
             path="/login"
-            element={
-              <PhoneSignUp loggedin={loggedin} setloggedin={setloggedin} />
-            }
+            element={<PhoneSignUp loggedin={loggedin} setloggedin={setloggedin} />}
           ></Route>
           <Route
             path="/panorama"
-            element={<Home2 loggedin={loggedin} />}
+            element={<Home2 loggedin={loggedin} setloggedin={setloggedin} />}
           ></Route>
-          <Route path="/track" element={<Track loggedin={loggedin} />}></Route>
+          <Route path="/track" element={<Track loggedin={loggedin} setloggedin={setloggedin} />}></Route>
         </Routes>
       </UserAuthContextProvider>
     </div>

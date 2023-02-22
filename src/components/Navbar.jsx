@@ -3,14 +3,15 @@ import styled from 'styled-components'
 import { Link, useNavigate } from "react-router-dom";
  
 
-function Navbar({loggedin, setloggedin}) {
+function Navbar({loggedin,setloggedin}) {
 
   const navigate = useNavigate();
 
   const logout = () => {
-    window["logOutFunction"]();
+    // window["logOutFunction"]();
     setloggedin({isloggedin: false, user: ""});
     navigate("/");
+    window.localStorage.clear();
   }
 
   return (

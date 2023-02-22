@@ -6,7 +6,7 @@ import GoogleButton from "react-google-button";
 import styled from "styled-components";
 import { useUserAuth } from "../context/UserAuthContext";
 import './login.css'
-const SignUpForm = ({loggedin, setLoggedin}) => {
+const SignUpForm = ({loggedin,setloggedin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -33,7 +33,8 @@ const SignUpForm = ({loggedin, setLoggedin}) => {
     try {
       const result = await googleSignIn();
       console.log("RESULT IS ", result);
-      setLoggedin({
+      window.localStorage('loggedin',{isloggedin:true,user:"User"});
+      setloggedin({
         isloggedin: true,
         user: "User"
       })
@@ -117,10 +118,6 @@ const SignUpForm = ({loggedin, setLoggedin}) => {
       <div className="p-4 box mt-3 text-center">
         Already have an account? <Link to="/login">LogIn</Link>
       </div>
-
-
-
-
     </>
   );
 };

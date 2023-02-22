@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import "react-phone-number-input/style.css";
+import { Alert, Button, Form } from "react-bootstrap";
 import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { useUserAuth } from "../context/UserAuthContext";
 
-const PhoneSignUp = ({loggedin, setloggedin}) => {
+const PhoneSignUp = ({loggedin,setloggedin}) => {
   const [error, setError] = useState("");
   const [number, setNumber] = useState("");
   const [flag, setFlag] = useState(false);
@@ -41,6 +40,8 @@ const PhoneSignUp = ({loggedin, setloggedin}) => {
     try {
       await result.confirm(otp);
       
+      window.localStorage.setItem('isloggedin',true);
+      window.localStorage.setItem('user',number);
       setloggedin({
         isloggedin: true,
         user: number

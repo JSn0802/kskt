@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import { Form } from "react-bootstrap";
+import React, { useState } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import { useNavigate, useParams } from "react-router-dom";
-import styles from "./styles.css";
-function BuyTogether({ loggedin, setLoggedIn }) {
-  const cropType = useParams().type;
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+function BuyTogether({ loggedin}) {
   const [quantity, setQuantity] = useState(null);
   const data = [10, 20, 30, 40];
   const navigate = useNavigate();
