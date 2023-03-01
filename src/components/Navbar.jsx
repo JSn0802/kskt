@@ -20,7 +20,7 @@ function Navbar({loggedin, setloggedin}) {
           <li><Slink to='/'>About Us</Slink></li>
           
           <li><Slink to='/buyTogether'>Buy Together</Slink></li>
-          
+        
           <li><Slink to='/'>Contact Us</Slink></li>
           
           {loggedin.isloggedin ?  <li><Slink to='/track'>Track</Slink></li> : null}

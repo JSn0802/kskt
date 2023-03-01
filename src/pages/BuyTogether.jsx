@@ -113,6 +113,7 @@ function BuyTogether({ loggedin, setLoggedIn }) {
               boxShadow: "0px 0px 15px #999",
             }}
             onClick={() => {
+              console.log(isloggedin,user);
               if (!isloggedin) {
                 navigate("../signup");
               }

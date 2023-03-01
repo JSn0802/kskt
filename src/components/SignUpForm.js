@@ -106,7 +106,7 @@ const SignUpForm = ({loggedin, setLoggedin}) => {
             
           />
         </div>
-        {/* <Link to="/phonesignup">
+        {/* <Link to="/Login">
           <div className="d-grid gap-2 mt-3">
             <Button variant="success" type="Submit">
               Sign in with Phone

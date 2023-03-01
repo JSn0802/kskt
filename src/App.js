@@ -11,9 +11,11 @@ import Farmers from "./pages/Farmers";
 import Home from "./pages/Home";
 import Home2 from "./pages/Home2";
 import LogReg from "./pages/LogReg";
-import PhoneSignUp from "./pages/PhoneSignUp";
+import Login from "./pages/Login";
 import Product from "./pages/Product";
 import Track from "./pages/Track";
+import PasswordSignUp from "./components/PasswordSignUp"
+import OTPSignUp from "./components/OTPSignUp"
 
 function App() {
   const [loggedin, setloggedin] = useState({
@@ -46,7 +48,19 @@ function App() {
           <Route
             path="/login"
             element={
-              <PhoneSignUp loggedin={loggedin} setloggedin={setloggedin} />
+              <Login/>
+            }
+          ></Route>
+          <Route
+            path="/passwordSignUp"
+            element={
+              <PasswordSignUp loggedin={loggedin} setloggedin={setloggedin} />
+            }
+          ></Route>
+          <Route
+            path="/otpSignUp"
+            element={
+              <OTPSignUp loggedin={loggedin} setloggedin={setloggedin} />
             }
           ></Route>
           <Route
