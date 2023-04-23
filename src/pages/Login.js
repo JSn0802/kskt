@@ -21,22 +21,19 @@ const Login = () => {
           </Form.Group>
           <div className="button-center" align="center">
             &nbsp;
-            &nbsp;
-            <Link to="/">
-              <Button variant="secondary">Cancel</Button>
-            </Link>
-            &nbsp;
-            &nbsp;
             <Link to="/passwordSignUp">
               <Button variant="primary"> Password LogIn</Button>
             </Link>
-            &nbsp;
             &nbsp;
             <Link to="/otpSignUp">
               <Button variant="primary"> OTP LogIn </Button>
             </Link>
             &nbsp;
+            <Link to="/">
+              <Button variant="secondary">Cancel</Button>
+            </Link>
             &nbsp;
+            
           </div>
         </Form>
     </Sdiv>

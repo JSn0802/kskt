@@ -16,6 +16,7 @@ import Product from "./pages/Product";
 import Track from "./pages/Track";
 import PasswordSignUp from "./components/PasswordSignUp"
 import OTPSignUp from "./components/OTPSignUp"
+import StripeContainer from "./pages/StripeContainer"
 
 function App() {
   const [loggedin, setloggedin] = useState({
@@ -61,6 +62,12 @@ function App() {
             path="/otpSignUp"
             element={
               <OTPSignUp loggedin={loggedin} setloggedin={setloggedin} />
+            }
+          ></Route>
+          <Route
+            path="/paymentGateway"
+            element={
+              <StripeContainer/>
             }
           ></Route>
           <Route
