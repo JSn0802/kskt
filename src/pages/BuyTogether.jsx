@@ -5,22 +5,24 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Form } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.css";
-function BuyTogether() {
+
+
+function BuyTogether({ loggedin, setLoggedIn }) {
   const cropType = useParams().type;
   const [quantity, setQuantity] = useState(null);
-  const data = [10, 20, 30, 40];
-  const API_KEY = "3033fdbf-2e3b-4292-9ae7-e99df3f7ac81";
-  const [init, setInit] = useState(false);
-
+  const data = [10, 20, 30, 40, 50, 60];
+  const navigate = useNavigate();
+  //const API_KEY = "3033fdbf-2e3b-4292-9ae7-e99df3f7ac81";
+  const { isloggedin, user } = loggedin;
   const clickHandler = (e) => {
     e.preventDefault();
     console.log(e);
     setQuantity(e.target.innerText);
     console.log(quantity);
   };
-  const initPayment = (values) => {
+  /*const initPayment = (values) => {
     console.log("Hurray! Your Payment has been initiated!");
     axios
       .post("https://merchant.upigateway.com/api/create_order", {
@@ -53,9 +55,10 @@ function BuyTogether() {
     validationSchema: Yup.object({
       name: Yup.string().required("Enter your Name"),
     }),
-    validateOnChange:true,
+    validateOnChange: true,
     onSubmit: initPayment,
   });
+  */
   return (
     <div className="buyContainer" style={{ padding: "4rem 3rem 1.5rem" }}>
       <div
@@ -102,24 +105,33 @@ function BuyTogether() {
             fontSize: "1.2rem",
           }}
         >
-          <button
-            style={{
-              width: "fit-content",
-              padding: "0.8rem",
-              background: "orange",
-              fontWeight: "bold",
-              color: "white",
-              borderRadius: "10px",
-              boxShadow: "0px 0px 15px #999",
-            }}
-            onClick={() => {
-              setInit(true);
-            }}
-          >
-            CONFIRM ORDER
-          </button>
+          
+            <button
+              style={{
+                width: "fit-content",
+                padding: "0.8rem",
+                background: "orange",
+                fontWeight: "bold",
+                color: "white",
+                borderRadius: "10px",
+                boxShadow: "0px 0px 15px #999",
+              }}
+              onClick={() => {
+                console.log(isloggedin,user);
+                if (!isloggedin) {
+                  navigate("../signup");
+                }
+                else{
+                  navigate("../paymentGateway",{state: {value: 250*quantity}});
+                }
+              }}
+            >
+              
+              CONFIRM ORDER
+            </button>
+          
         </div>
-        {init && (
+        {/* {init && (
           <div className={styles.center}>
             <Form style={{ width: "100%" }}>
               <label htmlFor="name">Enter Your Name</label>
@@ -182,7 +194,7 @@ function BuyTogether() {
               CONFIRM PAYMENT
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

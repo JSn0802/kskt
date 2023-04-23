@@ -6,7 +6,7 @@ import GoogleButton from "react-google-button";
 import styled from "styled-components";
 import { useUserAuth } from "../context/UserAuthContext";
 import './login.css'
-const LoginForm = ({loggedin, setLoggedin}) => {
+const SignUpForm = ({loggedin, setLoggedin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -80,7 +80,14 @@ const LoginForm = ({loggedin, setLoggedin}) => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control
               type="password"
-              placeholder="Password"
+              placeholder="Create Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Control
+              type="password"
+              placeholder="Confirm Password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
@@ -99,7 +106,7 @@ const LoginForm = ({loggedin, setLoggedin}) => {
             
           />
         </div>
-        {/* <Link to="/phonesignup">
+        {/* <Link to="/Login">
           <div className="d-grid gap-2 mt-3">
             <Button variant="success" type="Submit">
               Sign in with Phone
@@ -108,7 +115,7 @@ const LoginForm = ({loggedin, setLoggedin}) => {
         </Link> */}
       </Sform>
       <div className="p-4 box mt-3 text-center">
-        Already have an account? <Link to="/phonesignup">LogIn</Link>
+        Already have an account? <Link to="/login">LogIn</Link>
       </div>
 
 
@@ -122,5 +129,5 @@ const Sform=styled.div`
   margin: 5% 30%;
   
 `;
-export default LoginForm;
+export default SignUpForm;
 
